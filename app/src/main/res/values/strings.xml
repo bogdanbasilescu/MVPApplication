@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">MVPApplication</string>
+    <string name="messsage_success_list">List scavenged</string>
+    <string name="iv_content_description">Default description</string>
+    <string name="message_error_get_movie">Movie not available</string>
+    <string name="menu_add_movie">Add movie</string>
+    <string name="hint_movie_title">Title</string>
+    <string name="hint_movie_overview">Overview</string>
+    <string name="hint_movie_original_language">Original language</string>
+
+    <!-- Fragment tags -->
+    <string name="main_fragment_tag">MainFragment</string>
+    <string name="details_fragment_tag">DetailsFragment</string>
+    <string name="add_movie_fragment_tag">AddMovieFragment</string>
+</resources>
