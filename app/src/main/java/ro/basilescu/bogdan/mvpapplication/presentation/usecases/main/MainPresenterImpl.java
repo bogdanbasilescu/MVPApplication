@@ -28,6 +28,7 @@ public class MainPresenterImpl extends AbsPresenter<MainContract.MainView> imple
     @Override
     public void onCreated() {
         if (movieModel.hasMovies()) {
+            movieList.clear();
             movieList.addAll(movieModel.getMovies());
             getView().displayResults();
         } else {
@@ -38,7 +39,11 @@ public class MainPresenterImpl extends AbsPresenter<MainContract.MainView> imple
 
     @Override
     public void onResume() {
-        //Empty
+        if (movieModel.hasMovies()) {
+            movieList.clear();
+            movieList.addAll(movieModel.getMovies());
+            getView().displayResults();
+        }
     }
 
     @Override

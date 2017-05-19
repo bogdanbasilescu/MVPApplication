@@ -20,6 +20,9 @@ public interface MovieModel extends Model {
 
     Movie getMovie(int id);
 
+    void addMovie(String title, String originalTitle, String overview, String releaseDate,
+                  final RequestCallback requestCallback);
+
     void clearMovies();
 
     void sortMovies();

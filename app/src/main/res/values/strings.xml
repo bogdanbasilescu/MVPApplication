@@ -6,7 +6,9 @@
     <string name="menu_add_movie">Add movie</string>
     <string name="hint_movie_title">Title</string>
     <string name="hint_movie_overview">Overview</string>
-    <string name="hint_movie_original_language">Original language</string>
+    <string name="hint_original_title">Original title</string>
+    <string name="hint_release_date">Release date</string>
+    <string name="btn_add_movie">Add movie</string>
 
     <!-- Fragment tags -->
     <string name="main_fragment_tag">MainFragment</string>

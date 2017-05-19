@@ -11,7 +11,6 @@ public class RealmMovie extends RealmObject {
     @PrimaryKey
     private int id;
 
-    @Required
     private String posterPath;
     private boolean adult;
     @Required
@@ -22,7 +21,6 @@ public class RealmMovie extends RealmObject {
     private List<Integer> genreIds;
     @Required
     private String originalTitle;
-    @Required
     private String originalLanguage;
     @Required
     private String title;
@@ -34,6 +32,15 @@ public class RealmMovie extends RealmObject {
 
     public RealmMovie() {
         //Empty constructor
+    }
+
+    public RealmMovie(int id, String title, String originalTitle, String overview, String releaseDate, String posterPath) {
+        this.id = id;
+        this.title = title;
+        this.originalTitle = originalTitle;
+        this.overview = overview;
+        this.releaseDate = releaseDate;
+        this.posterPath = posterPath;
     }
 
     public RealmMovie(int id, String posterPath, boolean adult, String overview,

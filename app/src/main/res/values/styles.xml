@@ -17,4 +17,9 @@
         <item name="android:windowTranslucentNavigation">true</item>
     </style>
 
+    <style name="AppTheme.NoActionBar.SplashScreen">
+        <!-- TODO: change image for splash screen -->
+        <item name="android:windowBackground">@mipmap/ic_launcher</item>
+    </style>
+
 </resources>

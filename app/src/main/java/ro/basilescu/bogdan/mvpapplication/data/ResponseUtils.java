@@ -3,6 +3,7 @@ package ro.basilescu.bogdan.mvpapplication.data;
 import java.util.ArrayList;
 import java.util.List;
 
+import ro.basilescu.bogdan.mvpapplication.data.local.realm.tables.RealmMovie;
 import ro.basilescu.bogdan.mvpapplication.data.remote.ApiMovieResponse;
 import ro.basilescu.bogdan.mvpapplication.data.remote.ApiResponse;
 import ro.basilescu.bogdan.mvpapplication.presentation.models.AppResponse;
@@ -14,6 +15,15 @@ public class ResponseUtils {
     Image baseUrls
      */
     public static final String IMAGE_BASE_URL = "http://image.tmdb.org/t/p/w185/";
+
+    public static Movie makeFromRealmMovieToMovie(RealmMovie realmMovie) {
+        Movie movie = new Movie();
+        movie.setTitle(realmMovie.getTitle());
+        movie.setOriginalTitle(realmMovie.getOriginalTitle());
+        movie.setOverview(realmMovie.getOverview());
+        movie.setReleaseDate(realmMovie.getReleaseDate());
+        return movie;
+    }
 
     public static AppResponse makeFromApiResponseToAppResponse(ApiResponse apiResponse) {
         AppResponse appResponse = new AppResponse();

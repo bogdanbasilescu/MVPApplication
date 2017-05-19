@@ -8,13 +8,13 @@
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp">
+        android:layout_marginTop="20dp">
 
         <EditText
             android:id="@+id/et_movie_title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="20dp"
             android:hint="@string/hint_movie_title"
             android:inputType="text"
             android:textStyle="bold"/>
@@ -23,13 +23,28 @@
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp">
+        android:layout_marginTop="20dp">
+
+        <EditText
+            android:id="@+id/et_movie_originalTitle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="20dp"
+            android:hint="@string/hint_original_title"
+            android:inputType="text"
+            android:textStyle="bold"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
 
         <EditText
             android:id="@+id/et_movie_overview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="20dp"
             android:hint="@string/hint_movie_overview"
             android:inputType="text"
             android:textStyle="bold"/>
@@ -38,15 +53,21 @@
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp">
+        android:layout_marginTop="20dp">
 
         <EditText
-            android:id="@+id/et_movie_originalLanguage"
+            android:id="@+id/et_movie_release_date"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="30dp"
-            android:hint="@string/hint_movie_overview"
-            android:inputType="text"
+            android:layout_marginBottom="20dp"
+            android:hint="@string/hint_release_date"
+            android:inputType="date"
             android:textStyle="bold"/>
     </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/btn_add_movie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_add_movie"/>
 </LinearLayout>

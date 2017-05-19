@@ -13,12 +13,43 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         buildConfigField 'String', 'MOVIE_API_KEY', '"3ae570adc23bfdb0e0d111a8cc8c1621"'
+        buildConfigField 'String', 'LOCAL', '"local"'
+        buildConfigField 'String', 'REMOTE', '"remote"'
+        buildConfigField 'String', 'MOCK', '"mock"'
     }
+
+    flavorDimensions "mode"
+
+    productFlavors {
+        local {
+            dimension "mode"
+        }
+
+        remote {
+            dimension "mode"
+        }
+
+        mock {
+            dimension "mode"
+        }
+    }
+
     buildTypes {
+
+        debug {
+            // Set debug build properties here
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+}
+
+repositories{
+    maven {
+        url 'https://github.com/uPhyca/stetho-realm/raw/master/maven-repo'
     }
 }
 
@@ -47,4 +78,7 @@ dependencies {
     // Butterknife
     compile 'com.jakewharton:butterknife:8.5.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+    // Stetho - for Realm inspection - pretty broken though
+    debugCompile 'com.facebook.stetho:stetho:1.5.0'
+    debugCompile 'com.uphyca:stetho_realm:2.0.0'
 }
