@@ -1,6 +1,7 @@
 package ro.basilescu.bogdan.mvpapplication;
 
 import android.app.Application;
+import android.support.multidex.MultiDex;
 
 import com.facebook.stetho.Stetho;
 import com.uphyca.stetho_realm.RealmInspectorModulesProvider;
@@ -25,6 +26,7 @@ public class MVPApplication extends Application {
                                 .build())
                         .build());
 
+        MultiDex.install(this);
     }
 
     public static MVPApplication getInstance() {
