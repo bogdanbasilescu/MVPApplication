@@ -20,21 +20,23 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import ro.basilescu.bogdan.mvpapplication.BuildConfig;
 import ro.basilescu.bogdan.mvpapplication.MVPApplication;
+import ro.basilescu.bogdan.mvpapplication.data.remote.model.ApiMovieResponse;
+import ro.basilescu.bogdan.mvpapplication.data.remote.model.ApiResponse;
 import ro.basilescu.bogdan.mvpapplication.presentation.utils.ConnectionUtils;
 import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
-public class MovieApiClient {
+public class RemoteDataSource {
 
     private static final String BASE_URL = "http://api.themoviedb.org/3/";
-    private static MovieApiClient movieApiClient = null;
+    private static RemoteDataSource movieApiClient = null;
     private MovieApiService movieApiService;
 
     private static final int CACHE_SIZE = 10 * 1024 * 1024;
 
-    private MovieApiClient() {
+    private RemoteDataSource() {
         Retrofit.Builder builder = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
@@ -44,8 +46,8 @@ public class MovieApiClient {
         movieApiService = retrofit.create(MovieApiService.class);
     }
 
-    public static MovieApiClient getInstance() {
-        if (movieApiClient == null) movieApiClient = new MovieApiClient();
+    public static RemoteDataSource getInstance() {
+        if (movieApiClient == null) movieApiClient = new RemoteDataSource();
         return movieApiClient;
     }
 

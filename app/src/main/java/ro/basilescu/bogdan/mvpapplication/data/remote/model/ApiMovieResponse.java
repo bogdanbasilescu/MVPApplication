@@ -1,4 +1,4 @@
-package ro.basilescu.bogdan.mvpapplication.data.remote;
+package ro.basilescu.bogdan.mvpapplication.data.remote.model;
 
 import com.google.gson.annotations.SerializedName;
 

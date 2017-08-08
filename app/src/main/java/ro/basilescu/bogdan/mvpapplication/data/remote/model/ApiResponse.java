@@ -1,4 +1,4 @@
-package ro.basilescu.bogdan.mvpapplication.data.remote;
+package ro.basilescu.bogdan.mvpapplication.data.remote.model;
 
 /**
  * Created by bogdan.basilescu on 5/2/2017.
@@ -7,6 +7,8 @@ package ro.basilescu.bogdan.mvpapplication.data.remote;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
+
+import ro.basilescu.bogdan.mvpapplication.data.remote.model.ApiMovieResponse;
 
 /**
  * Class MovieResponse model mapped for Json Schema for REST service

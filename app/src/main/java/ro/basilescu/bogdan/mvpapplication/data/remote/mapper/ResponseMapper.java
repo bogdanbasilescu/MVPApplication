@@ -1,15 +1,15 @@
-package ro.basilescu.bogdan.mvpapplication.data;
+package ro.basilescu.bogdan.mvpapplication.data.remote.mapper;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import ro.basilescu.bogdan.mvpapplication.data.local.realm.tables.RealmMovie;
-import ro.basilescu.bogdan.mvpapplication.data.remote.ApiMovieResponse;
-import ro.basilescu.bogdan.mvpapplication.data.remote.ApiResponse;
+import ro.basilescu.bogdan.mvpapplication.data.remote.model.ApiMovieResponse;
+import ro.basilescu.bogdan.mvpapplication.data.remote.model.ApiResponse;
 import ro.basilescu.bogdan.mvpapplication.presentation.models.AppResponse;
 import ro.basilescu.bogdan.mvpapplication.presentation.models.Movie;
 
-public class ResponseUtils {
+public class ResponseMapper {
 
     /*
     Image baseUrls

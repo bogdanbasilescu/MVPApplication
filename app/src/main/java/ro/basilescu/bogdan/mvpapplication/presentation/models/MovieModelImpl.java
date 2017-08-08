@@ -5,11 +5,11 @@ import java.util.List;
 
 import io.realm.RealmObject;
 import ro.basilescu.bogdan.mvpapplication.BuildConfig;
-import ro.basilescu.bogdan.mvpapplication.data.ResponseUtils;
-import ro.basilescu.bogdan.mvpapplication.data.local.realm.RealmDb;
+import ro.basilescu.bogdan.mvpapplication.data.remote.mapper.ResponseMapper;
+import ro.basilescu.bogdan.mvpapplication.data.local.realm.LocalDataSource;
 import ro.basilescu.bogdan.mvpapplication.data.local.realm.tables.RealmMovie;
-import ro.basilescu.bogdan.mvpapplication.data.remote.ApiResponse;
-import ro.basilescu.bogdan.mvpapplication.data.remote.MovieApiClient;
+import ro.basilescu.bogdan.mvpapplication.data.remote.model.ApiResponse;
+import ro.basilescu.bogdan.mvpapplication.data.remote.RemoteDataSource;
 import ro.basilescu.bogdan.mvpapplication.presentation.mvp.model.RequestCallback;
 import rx.Subscriber;
 import rx.functions.Action1;
@@ -94,10 +94,10 @@ public class MovieModelImpl implements MovieModel {
 
     @Override
     public void addMovie(String title, String originalTitle, String overview, String releaseDate, final RequestCallback requestCallback) {
-        RealmDb.getInstance().addOrUpdateMovie(title, originalTitle, overview, releaseDate, new Action1<RealmObject>() {
+        LocalDataSource.getInstance().addOrUpdateMovie(title, originalTitle, overview, releaseDate, new Action1<RealmObject>() {
             @Override
             public void call(RealmObject realmObject) {
-                Movie movie = ResponseUtils.makeFromRealmMovieToMovie((RealmMovie) realmObject);
+                Movie movie = ResponseMapper.makeFromRealmMovieToMovie((RealmMovie) realmObject);
                 movieList.add(movie);
                 requestCallback.onReceived();
             }
@@ -105,7 +105,7 @@ public class MovieModelImpl implements MovieModel {
     }
 
     private void fetchRemoteData(final RequestCallback requestCallback) {
-        MovieApiClient.getInstance().getTopRatedMovies(new Subscriber<ApiResponse>() {
+        RemoteDataSource.getInstance().getTopRatedMovies(new Subscriber<ApiResponse>() {
             @Override
             public void onCompleted() {
 
@@ -118,7 +118,7 @@ public class MovieModelImpl implements MovieModel {
 
             @Override
             public void onNext(ApiResponse apiResponse) {
-                AppResponse appResponse = ResponseUtils.makeFromApiResponseToAppResponse(apiResponse);
+                AppResponse appResponse = ResponseMapper.makeFromApiResponseToAppResponse(apiResponse);
                 movieList.clear();
                 movieList.addAll(appResponse.getResults());
                 requestCallback.onReceived();
@@ -135,7 +135,7 @@ public class MovieModelImpl implements MovieModel {
     }
 
     private void fetchRemoteSearchData(final RequestCallback requestCallback, String query) {
-        MovieApiClient.getInstance().getSearchedMovie(new Subscriber<ApiResponse>() {
+        RemoteDataSource.getInstance().getSearchedMovie(new Subscriber<ApiResponse>() {
             @Override
             public void onCompleted() {
 
@@ -148,7 +148,7 @@ public class MovieModelImpl implements MovieModel {
 
             @Override
             public void onNext(ApiResponse apiResponse) {
-                AppResponse appResponse = ResponseUtils.makeFromApiResponseToAppResponse(apiResponse);
+                AppResponse appResponse = ResponseMapper.makeFromApiResponseToAppResponse(apiResponse);
                 movieList.clear();
                 movieList.addAll(appResponse.getResults());
                 requestCallback.onReceived();

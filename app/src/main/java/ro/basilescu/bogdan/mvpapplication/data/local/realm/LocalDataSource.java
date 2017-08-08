@@ -1,26 +1,30 @@
 package ro.basilescu.bogdan.mvpapplication.data.local.realm;
 
+import java.util.List;
+
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 import io.realm.RealmList;
 import io.realm.RealmObject;
+import ro.basilescu.bogdan.mvpapplication.data.MovieDataSource;
 import ro.basilescu.bogdan.mvpapplication.data.local.realm.tables.RealmMovie;
+import ro.basilescu.bogdan.mvpapplication.presentation.models.Movie;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 
-public class RealmDb implements MovieDataSource {
+public class LocalDataSource implements MovieDataSource {
 
     private static final String REALM_NAME = "mvprealm.realm";
     private static final long SCHEMA_VERSION = 1;
 
-    private static RealmDb realmDb;
+    private static LocalDataSource realmDb;
 
-    private RealmDb() {
+    private LocalDataSource() {
         //Empty
     }
 
-    public static RealmDb getInstance() {
-        if (realmDb == null) realmDb = new RealmDb();
+    public static LocalDataSource getInstance() {
+        if (realmDb == null) realmDb = new LocalDataSource();
         return realmDb;
     }
 
@@ -31,7 +35,6 @@ public class RealmDb implements MovieDataSource {
                 .build());
     }
 
-    @Override
     public void addOrUpdateMovie(String title, String originalTitle, String overview, String releaseDate, Action1<RealmObject> action) {
         Realm realm = getRealmInstance();
         RealmMovie realmMovie = new RealmMovie();
@@ -62,20 +65,42 @@ public class RealmDb implements MovieDataSource {
         }
     }
 
-    @Override
     public RealmMovie getMovie(int id, Action1<RealmObject> subscriber) {
         Realm realm = getRealmInstance();
         return null;
     }
 
-    @Override
     public RealmList<RealmMovie> getMovies(Action1<RealmList<RealmObject>> subscriber) {
         Realm realm = getRealmInstance();
         return null;
     }
 
-    @Override
     public void deleteMovie(int id, Action1<RealmObject> subscriber) {
         Realm realm = getRealmInstance();
+    }
+
+    @Override
+    public void add(Movie item) {
+
+    }
+
+    @Override
+    public List<Movie> getAll() {
+        return null;
+    }
+
+    @Override
+    public Movie get(Movie item) {
+        return null;
+    }
+
+    @Override
+    public void update(Movie item) {
+
+    }
+
+    @Override
+    public void delete(Movie item) {
+
     }
 }

@@ -3,6 +3,8 @@ package ro.basilescu.bogdan.mvpapplication.data.remote;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
+import ro.basilescu.bogdan.mvpapplication.data.remote.model.ApiMovieResponse;
+import ro.basilescu.bogdan.mvpapplication.data.remote.model.ApiResponse;
 import rx.Observable;
 
 /**
